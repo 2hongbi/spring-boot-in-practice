@@ -6,6 +6,7 @@ plugins {
 
 group = 'org.boot'
 version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '17'
 
 java {
     toolchain {
@@ -23,6 +24,12 @@ dependencies {
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
     testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
 }
+
+
+tasks.withType(JavaCompile) {
+    options.compilerArgs << "-parameters"
+}
+
 
 tasks.named('test') {
     useJUnitPlatform()
