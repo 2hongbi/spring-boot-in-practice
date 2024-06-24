@@ -1,4 +1,4 @@
-package org.boot.springbootinpractice;
+package org.boot.springbootinpractice.domain;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
