@@ -16,15 +16,7 @@ public class RestApiDemoController {
     private final CoffeeRepository coffeeRepository;
 
     public RestApiDemoController(CoffeeRepository coffeeRepository) {
-
         this.coffeeRepository = coffeeRepository;
-
-        this.coffeeRepository.saveAll(List.of(
-                new Coffee("Café Cereza"),
-                new Coffee("Café Ganador"),
-                new Coffee("Café Lareño"),
-                new Coffee("Café Três Pontas")
-        ));
     }
 
     @GetMapping
@@ -44,12 +36,12 @@ public class RestApiDemoController {
 
     @PutMapping("/{id}")
     public ResponseEntity<Coffee> putCoffee(@PathVariable String id, @RequestBody Coffee coffee) {
-        if (!coffeeRepository.existsById(id)) {
-            coffee.setId(UUID.randomUUID().toString());
-            return new ResponseEntity<>(coffeeRepository.save(coffee), HttpStatus.CREATED);
-        } else {
+        if (coffeeRepository.existsById(id)) {
             coffee.setId(id);
             return new ResponseEntity<>(coffeeRepository.save(coffee), HttpStatus.OK);
+        } else {
+            coffee.setId(UUID.randomUUID().toString());
+            return new ResponseEntity<>(coffeeRepository.save(coffee), HttpStatus.CREATED);
         }
     }
 
