@@ -1,17 +1,7 @@
 package org.boot.springbootinpractice;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
-
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
-import java.util.UUID;
 
 @SpringBootApplication
 public class SpringBootInPracticeApplication {
